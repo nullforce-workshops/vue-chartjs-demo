@@ -18,6 +18,8 @@
       </div>
       <div class="column">
         <h3>Reactivity - Live update upon change in datasets</h3>
+        <reactive :chart-data="datacollection"></reactive>
+        <button class="button is-primary" @click="fillData()">Randomize</button>
       </div>
     </div>
   </section>
@@ -36,6 +38,32 @@
       BarChart,
       BubbleChart,
       Reactive
+    },
+    data () {
+      return {
+        datacollection: null
+      }
+    },
+    created () {
+      this.fillData()
+    },
+    methods: {
+      fillData () {
+        this.datacollection = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets: [
+            {
+              label: 'Data One',
+              backgroundColor: '#f87979',
+              // Data for the x-axis of the chart
+              data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+            }
+          ]
+        }
+      },
+      getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      }
     }
   }
 </script>
