@@ -3,7 +3,10 @@ import App from './App.vue'
 import router from './router'
 import 'chart.js'
 import 'hchs-vue-charts'
+import Chartkick from 'chartkick'
+import VueChartkick from 'vue-chartkick'
 
+Vue.use(VueChartkick, { Chartkick })
 Vue.use(window.VueCharts)
 Vue.config.productionTip = false
 
